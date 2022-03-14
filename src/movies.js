@@ -52,16 +52,22 @@ function dramaMoviesScore(movies) {
 // --- CATALÀ ---
 // Ordenar per any. Order per ordre ascendent (creixent) les pel·lícules.
 function orderByYear(movies) {
-  const copyMovies = movies.map((n) => n);
-  const ordreAnys = copyMovies.year.sort((a, b) => {
-    if (a - b === true) {
-      let result = a - b;
-      return [result];
-    }
-    if (a - d === 0) {
-      return [movies.title.sort()];
+  const copyMovies = movies.map((movie) => movie);
+  copyMovies.sort((a, b) => {
+    if (a.year === b.year) {
+      if (a.title > b.title) {
+        return 1;
+      } else if (a.title < b.title) {
+        return -1;
+      } else {
+        return 0;
+      }
+    } else {
+      return a.year - b.year;
     }
   });
+
+  return copyMovies;
 }
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
